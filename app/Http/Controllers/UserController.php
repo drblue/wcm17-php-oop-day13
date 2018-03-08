@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
 	function index() {
-		$users = \App\User::get();
+		$users = User::get();
 
 		return view('users/index', ['users' => $users]);	
 	}
 
-	function show($user_id) {
-		$user = \App\User::find($user_id);
-
+	function show(User $user) {
 		return view('users/show', ['user' => $user]);
 	}
 }

@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/usershow', 'UserController@usershow');
+Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/users/{user}', 'UserController@show')->name('users.show');
 
-Route::get('/users', 'UserController@index');
-Route::get('/users/{id}', 'UserController@show');
+// Product
+Route::get('/products', 'ProductController@index')->name('products.index');
 
+Route::post('/products', 'ProductController@store')->name('products.store');
+
+Route::get('/products/create', 'ProductController@create')->name('products.create');
+Route::get('/products/{product}', 'ProductController@show')->name('products.show');
+Route::get('/products/{product}/edit', 'ProductController@edit')->name('products.edit');
+Route::put('/products/{product}', 'ProductController@update')->name('products.update');
